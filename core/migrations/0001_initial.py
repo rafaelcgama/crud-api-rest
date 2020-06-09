@@ -22,9 +22,9 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Employee',
+            name='User',
             fields=[
-                ('cpf', models.ForeignKey(max_length=11, on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='salaryapp.Salary')),
+                ('cpf', models.ForeignKey(max_length=11, on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='core.Salary')),
                 ('name', models.CharField(max_length=50)),
                 ('dob', models.DateField()),
             ],
@@ -32,6 +32,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='salary',
             name='cpf',
-            field=models.ForeignKey(max_length=11, on_delete=django.db.models.deletion.CASCADE, to='salaryapp.Employee'),
+            field=models.ForeignKey(max_length=11, on_delete=django.db.models.deletion.CASCADE, to='core.User'),
         ),
     ]

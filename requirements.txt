@@ -1,2 +1,7 @@
 Django
 mysqlclient>=1.3.13
+django-cors-headers
+djangorestframework
+django-rest-auth
+django-allauth
+faker

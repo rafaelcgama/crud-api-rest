@@ -2,8 +2,8 @@ from django.db import models
 
 
 # Create your models here.
-class Employee(models.Model):
-    cpf = models.ForeignKey('salaryapp.Salary',
+class User(models.Model):
+    cpf = models.ForeignKey('core.Salary',
                             max_length=11,
                             primary_key=True,
                             blank=False,
@@ -25,7 +25,7 @@ class Employee(models.Model):
 class Salary(models.Model):
     id = models.AutoField(primary_key=True, blank=False, null=False)
     date_pmt = models.DateField(blank=False, null=False)
-    cpf = models.ForeignKey('salaryapp.Employee',
+    cpf = models.ForeignKey('core.User',
                             max_length=11,
                             blank=False,
                             null=False,
