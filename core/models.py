@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -11,6 +12,9 @@ class User(models.Model):
                             on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=False, null=False)
     dob = models.DateField(blank=False, null=False)
+
+    def __str__(self):
+        return f"{self.cpf} - {self.name} - {self.dob}"
 
     def get_cpf(self):
         return self.cpf
@@ -33,6 +37,9 @@ class Salary(models.Model):
     salary = models.FloatField(blank=False, null=False)
     deduction = models.FloatField(blank=False, null=False)
 
+    def __str__(self):
+        return f"{self.date_pmt} - {self.cpf} - {self.salary} - {self.deduction}"
+
     def get_id(self):
         return self.id
 
@@ -47,4 +54,3 @@ class Salary(models.Model):
 
     def get_deduction(self):
         return self.deduction
-

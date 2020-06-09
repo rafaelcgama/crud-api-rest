@@ -1,10 +1,6 @@
-from django.shortcuts import render
 from rest_framework import generics
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import User, Salary
-from .serializers import UserSerializer, SalarySerializer
-from .forms import UserCreate, SalaryCreate
+from api.serializers import UserSerializer, SalarySerializer
 
 
 # Create your views here.
@@ -22,7 +18,6 @@ from .forms import UserCreate, SalaryCreate
 # class SalaryList(ListView):
 #     model = Salary
 #     template_name = 'salary_list.html'
-
 class UserAPIView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
