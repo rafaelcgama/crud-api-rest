@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import User, Salary
-from api.serializers import UserSerializer, SalarySerializer
+from core.serializers import UserSerializer, SalarySerializer
 
 
 # Create your views here.
