@@ -1,29 +1,40 @@
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import generics
-from .models import User, Salary
-from core.serializers import UserSerializer, SalarySerializer
+from .models import Employee, Salary
+from .serializers import EmployeeSerializer, SalarySerializer
+from rest_framework.mixins import (
+    CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin)
+from rest_framework.viewsets import GenericViewSet
 
 
-# Create your views here.
-# class UserList(ListView, CreateView, UpdateView, DeleteView):
-#     model = User
-#     fields = ['cpf', 'name', 'dob']
-#
-#     def create
-#
-# class UserList(ListView):
-#     model = User
-#     template_name = 'user_list.html'
-#
-#
-# class SalaryList(ListView):
-#     model = Salary
-#     template_name = 'salary_list.html'
-class UserAPIView(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class EmployeeViewSet(GenericViewSet,
+                      CreateModelMixin,
+                      RetrieveModelMixin,
+                      UpdateModelMixin,
+                      ListModelMixin):
+
+    permission_classes = [IsAuthenticated]
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
 
 
-class SalaryAPIView(generics.ListAPIView):
+class SalaryViewSet(GenericViewSet,
+                    CreateModelMixin,
+                    RetrieveModelMixin,
+                    UpdateModelMixin,
+                    ListModelMixin):
+
+    permission_classes = [IsAuthenticated]
     queryset = Salary.objects.all()
     serializer_class = SalarySerializer
 
+# class EmployeeList(generics.ListCreateAPIView):
+#     queryset = Employee.objects.all()
+#     serializer_class = EmployeeSerializer
+#     permission_classes = (IsAuthenticated, )
+#
+#
+# class SalaryList(generics.ListCreateAPIView):
+#     queryset = Salary.objects.all()
+#     serializer_class = SalarySerializer
+#     permission_classes = (IsAuthenticated, )
