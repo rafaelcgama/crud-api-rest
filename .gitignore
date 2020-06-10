@@ -37,3 +37,4 @@ nosetests.xml
 
 #jupyter files
 /.ipynb_checkpoints/
+/tests.ipynb

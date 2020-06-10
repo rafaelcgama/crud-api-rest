@@ -1,4 +1,4 @@
-"""api URL Configuration
+"""api_crud URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import User
+from coreapp.views import Employee
+
+# from django.conf.urls import url, include
 
 urlpatterns = [
+    # path('admin/', admin.site.urls),
+    # path('api_crud-auth/', include('rest_framework.urls')),
+    # # path('', EmployeeAPIView.as_view()),
+    # # path('', SalaryAPIView.as_view()),
     path('admin/', admin.site.urls),
+    path('api/v1/', include('coreapp.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    # path('', UserAPIView.as_view()),
-    # path('', SalaryAPIView.as_view()),
+    path('api/v1/rest-auth/', include('rest_auth.urls')),
+    path('api/v1/rest-auth/registration/', include('rest_auth.registration.urls'))
 ]
