@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import User
+from core.views import Employee
+# from django.conf.urls import url, include
 
 urlpatterns = [
+    # path('admin/', admin.site.urls),
+    # path('api-auth/', include('rest_framework.urls')),
+    # # path('', EmployeeAPIView.as_view()),
+    # # path('', SalaryAPIView.as_view()),
     path('admin/', admin.site.urls),
+    path('api/v1/', include('core.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    # path('', UserAPIView.as_view()),
-    # path('', SalaryAPIView.as_view()),
+    path('api/v1/rest-auth/', include('rest_auth.urls')),
+
 ]
