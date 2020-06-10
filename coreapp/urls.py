@@ -2,9 +2,9 @@
 # from django.conf.urls import url, include
 # from .views import *
 # from django.urls import path, include
-from django.conf.urls import include, re_path
+from django.conf.urls import include, url
 from rest_framework.routers import DefaultRouter
-from .views import SalaryViewSet, EmployeeViewSet
+from coreapp.views import SalaryViewSet, EmployeeViewSet
 
 router = DefaultRouter()
 router.register('employee', EmployeeViewSet, basename='employee')
@@ -16,5 +16,5 @@ router.register('salary', SalaryViewSet, basename='salary')
 # ]
 
 urlpatterns = [
-    re_path('^', include(router.urls)),
+    url('^', include(router.urls)),
 ]

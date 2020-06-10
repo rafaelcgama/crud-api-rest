@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('date_pmt', models.DateField()),
                 ('salary', models.FloatField()),
                 ('deduction', models.FloatField()),
-                ('cpf', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.Employee')),
+                ('cpf', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coreapp.Employee')),
             ],
         ),
     ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Employee, Salary
+from coreapp.models import Employee, Salary
 
 # Register your models here.
 admin.site.register([Employee, Salary])

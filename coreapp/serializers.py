@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Employee, Salary
+from coreapp.models import Employee, Salary
 
 
 class EmployeeSerializer(serializers.ModelSerializer):

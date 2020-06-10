@@ -29,7 +29,7 @@ class Employee(models.Model):
 class Salary(models.Model):
     id = models.AutoField(primary_key=True, blank=False, null=False)
     date_pmt = models.DateField(blank=False, null=False)
-    cpf = models.ForeignKey('core.Employee', on_delete=models.CASCADE)
+    cpf = models.ForeignKey('coreapp.Employee', on_delete=models.CASCADE)
     salary = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
     deduction = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
 

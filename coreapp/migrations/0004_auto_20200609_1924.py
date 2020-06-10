@@ -7,7 +7,7 @@ import djmoney.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0003_auto_20200609_1653'),
+        ('coreapp', '0003_auto_20200609_1653'),
     ]
 
     operations = [

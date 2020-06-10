@@ -1,7 +1,7 @@
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import generics
-from .models import Employee, Salary
-from .serializers import EmployeeSerializer, SalarySerializer
+from coreapp.models import Employee, Salary
+from coreapp.serializers import EmployeeSerializer, SalarySerializer
 from rest_framework.mixins import (
     CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin)
 from rest_framework.viewsets import GenericViewSet
