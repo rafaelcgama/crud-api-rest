@@ -8,14 +8,8 @@ from coreapp.views import SalaryViewSet, EmployeeViewSet
 
 router = DefaultRouter()
 router.register(r'employee', EmployeeViewSet)
-# router.register(r'^{prefix}$', EmployeeViewSet, basename='employee')
-# router.register(r'^{prefix}/{lookup}$', EmployeeViewSet, basename='employee')
-# router.register('salary', SalaryViewSet)
+router.register(r'salary', SalaryViewSet)
 
-# urlpatterns = [
-#     path('employees/', EmployeeList.as_view()),
-#     path('salaries/', SalaryList.as_view())
-# ]
 
 urlpatterns = [
     url(r'^', include(router.urls)),
