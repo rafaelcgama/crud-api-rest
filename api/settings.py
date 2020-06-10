@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.utils.translation import gettext_lazy as _
+# from django.conf.locale.pt_BR import formats as pt_formats
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,18 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party
     'rest_framework',
-    # 'core',
-    # 'rest_framework.authtoken',
+    'corsheaders',
+    'djmoney',
+    'rest_framework.authtoken',
+    'rest_auth',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
     # 'rest_auth',
     # 'rest_auth.registration'
-    
-    
+
     # Local
-    'core.apps.CrudappConfig',
-    'corsheaders'
+    'core.apps.CoreConfig'
 ]
 
 MIDDLEWARE = [
@@ -68,21 +69,16 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
 )
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ],
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.SessionAuthentication',
-#         'rest_framework.authentication.TokenAuthentication'
-#     ],
-# }
+DATE_FORMAT, DATE_INPUT_FORMATS = '%d/%m/%Y', ['%d/%m/%Y']
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DATE_FORMAT': DATE_FORMAT,
+    'DATE_INPUT_FORMATS': DATE_INPUT_FORMATS,
     'DEFAULT_PERMISSION_CLASSES': [
-      'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated',
     ]
+
 }
 
 ROOT_URLCONF = 'api.urls'
@@ -156,7 +152,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATE_INPUT_FORMATS = ['%d/%m/%Y']
+# Currency Internacionalization
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -167,3 +165,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')
 # DataFlair #User_Uploaded_Files
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
