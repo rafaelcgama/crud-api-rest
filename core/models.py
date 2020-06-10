@@ -1,20 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+from djmoney.models.fields import MoneyField
+from django.core.validators import MinLengthValidator
 
 
 # Create your models here.
-class User(models.Model):
-    cpf = models.ForeignKey('core.Salary',
-                            max_length=11,
-                            primary_key=True,
-                            blank=False,
-                            null=False,
-                            on_delete=models.CASCADE)
+class Employee(models.Model):
+    cpf = models.CharField(primary_key=True,
+                           max_length=11,
+                           validators=[MinLengthValidator(11)],
+                           blank=False,
+                           null=False)
     name = models.CharField(max_length=50, blank=False, null=False)
     dob = models.DateField(blank=False, null=False)
 
     def __str__(self):
-        return f"{self.cpf} - {self.name} - {self.dob}"
+        return f"{self.cpf} - {self.name} - {self.dob.strftime('%d/%m/%Y')}"
 
     def get_cpf(self):
         return self.cpf
@@ -29,13 +29,9 @@ class User(models.Model):
 class Salary(models.Model):
     id = models.AutoField(primary_key=True, blank=False, null=False)
     date_pmt = models.DateField(blank=False, null=False)
-    cpf = models.ForeignKey('core.User',
-                            max_length=11,
-                            blank=False,
-                            null=False,
-                            on_delete=models.CASCADE)
-    salary = models.FloatField(blank=False, null=False)
-    deduction = models.FloatField(blank=False, null=False)
+    cpf = models.ForeignKey('core.Employee', on_delete=models.CASCADE)
+    salary = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
+    deduction = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
 
     def __str__(self):
         return f"{self.date_pmt} - {self.cpf} - {self.salary} - {self.deduction}"

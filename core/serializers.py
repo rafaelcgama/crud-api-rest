@@ -1,14 +1,16 @@
 from rest_framework import serializers
-from core.models import User, Salary
+from core.models import Employee, Salary
 
 
-class UserSerializer(serializers.ModelSerializer):
+class EmployeeSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = User
+        model = Employee
         fields = '__all__'
 
 
 class SalarySerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Salary
         fields = '__all__'
