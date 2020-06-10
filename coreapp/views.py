@@ -1,29 +1,22 @@
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
-from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from coreapp.models import Employee, Salary
 from coreapp.serializers import EmployeeSerializer, SalarySerializer
-from rest_framework.mixins import (
-    CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin)
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.generics import GenericAPIView, RetrieveAPIView
+# from rest_framework.mixins import (
+#     CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin)
+from rest_framework.viewsets import GenericViewSet, ModelViewSet
 
 
-class EmployeeViewSet(GenericViewSet,
-                      CreateModelMixin,
-                      RetrieveModelMixin,
-                      UpdateModelMixin,
-                      ListModelMixin):
+# class Emplo
 
+
+class EmployeeViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
 
-class SalaryViewSet(GenericViewSet,
-                    CreateModelMixin,
-                    RetrieveModelMixin,
-                    UpdateModelMixin,
-                    ListModelMixin):
-
+class SalaryViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Salary.objects.all()
     serializer_class = SalarySerializer

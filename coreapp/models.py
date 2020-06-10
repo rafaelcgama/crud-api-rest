@@ -12,6 +12,8 @@ class Employee(models.Model):
                            null=False)
     name = models.CharField(max_length=50, blank=False, null=False)
     dob = models.DateField(blank=False, null=False)
+    class Meta:
+        db_table = 'employee'
 
     def __str__(self):
         return f"{self.cpf} - {self.name} - {self.dob.strftime('%d/%m/%Y')}"
@@ -32,6 +34,8 @@ class Salary(models.Model):
     cpf = models.ForeignKey('coreapp.Employee', on_delete=models.CASCADE)
     salary = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
     deduction = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
+    class Meta:
+        db_table = 'salary'
 
     def __str__(self):
         return f"{self.date_pmt} - {self.cpf} - {self.salary} - {self.deduction}"

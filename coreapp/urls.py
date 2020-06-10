@@ -7,8 +7,10 @@ from rest_framework.routers import DefaultRouter
 from coreapp.views import SalaryViewSet, EmployeeViewSet
 
 router = DefaultRouter()
-router.register('employee', EmployeeViewSet, basename='employee')
-router.register('salary', SalaryViewSet, basename='salary')
+router.register(r'employee', EmployeeViewSet)
+# router.register(r'^{prefix}$', EmployeeViewSet, basename='employee')
+# router.register(r'^{prefix}/{lookup}$', EmployeeViewSet, basename='employee')
+# router.register('salary', SalaryViewSet)
 
 # urlpatterns = [
 #     path('employees/', EmployeeList.as_view()),
@@ -16,5 +18,5 @@ router.register('salary', SalaryViewSet, basename='salary')
 # ]
 
 urlpatterns = [
-    url('^', include(router.urls)),
+    url(r'^', include(router.urls)),
 ]
