@@ -76,7 +76,6 @@ CORS_ORIGIN_WHITELIST = (
 EMAIL_BACKEND = 'django.coreapp.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
-
 DATE_FORMAT, DATE_INPUT_FORMATS = '%d/%m/%Y', ['%d/%m/%Y']
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -85,11 +84,11 @@ REST_FRAMEWORK = {
     'DATE_INPUT_FORMATS': DATE_INPUT_FORMATS,
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        ],
+    ],
     'DEFAULT_RENDERER_CLASSES': [
-            'rest_framework.renderers.JSONRenderer',
-            'rest_framework.renderers.BrowsableAPIRenderer',
-        ]
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
 }
 
 ROOT_URLCONF = 'api_crud.urls'
@@ -122,13 +121,18 @@ DATABASES = {
         'NAME': 'levecapitaldb',
         'USER': 'root',
         'PASSWORD': '123123',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'HOST': 'host.docker.internal',
+        'PORT': '3307'
     }
 }
+
+# To allow docker compose
+ALLOWED_HOSTS = ['*']
+
+
 # Data files to provide initial data
 FIXTURE_DIRS = (
-   '/path/to/cure/fixtures/',
+    '/path/to/cure/fixtures/',
 )
 
 # Password validation

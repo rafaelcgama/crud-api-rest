@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     ports:
-      - '3306:3306'
+      - '3307:3306'
     environment:
        MYSQL_DATABASE: 'levecapitaldb'
        MYSQL_USER: 'root'
@@ -12,7 +12,8 @@ services:
        MYSQL_ROOT_PASSWORD: '123123'
   web:
       build: .
-      command: python manage.py runserver 0.0.0.0:8000
+      # .sh file not working in windows, hence this command
+      command: bash -c "python manage.py migrate && python manage.py loaddata dataset.json && python manage.py runserver 0.0.0.0:8000"
       volumes:
         - .:/code
       ports:
