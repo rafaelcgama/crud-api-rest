@@ -16,12 +16,12 @@ class SalarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class Calculations(models.Model):
-    """Create a MoneyField datatype to be able to serialize"""
+class MoneyFieldClass(models.Model):
+    """Create a MoneyField datatype to be able to allow serialization"""
     amount = MoneyField(max_digits=7, decimal_places=2)
 
 
 class CalculationsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Calculations
+        model = MoneyFieldClass
         fields = '__all__'

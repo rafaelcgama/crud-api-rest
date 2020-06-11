@@ -126,6 +126,10 @@ DATABASES = {
         'PORT': '3306'
     }
 }
+# Data files to provide initial data
+FIXTURE_DIRS = (
+   '/path/to/cure/fixtures/',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
