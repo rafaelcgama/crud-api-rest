@@ -1,6 +1,7 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 from django.core.validators import MinLengthValidator
+from datetime import datetime
 
 
 # Create your models here.
@@ -16,7 +17,7 @@ class Employee(models.Model):
         db_table = 'employee'
 
     def __str__(self):
-        return f"{self.cpf} - {self.name} - {self.dob.strftime('%d/%m/%Y')}"
+        return f"{self.cpf} - {self.name} - {self.dob}"
 
     def get_cpf(self):
         return self.cpf
