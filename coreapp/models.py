@@ -13,6 +13,7 @@ class Employee(models.Model):
                            null=False)
     name = models.CharField(max_length=50, blank=False, null=False)
     dob = models.DateField(blank=False, null=False)
+
     class Meta:
         db_table = 'employee'
 
@@ -35,6 +36,7 @@ class Salary(models.Model):
     cpf = models.ForeignKey('coreapp.Employee', on_delete=models.CASCADE)
     salary = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
     deduction = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
+
     class Meta:
         db_table = 'salary'
 

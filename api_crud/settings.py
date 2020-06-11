@@ -30,7 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +65,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# requires the server to include specific HTTP headers that allow for
+# the client to determine if and when cross-domain requests should be allowed.
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
@@ -74,6 +75,7 @@ CORS_ORIGIN_WHITELIST = (
 # User Registration
 EMAIL_BACKEND = 'django.coreapp.mail.backends.console.EmailBackend'
 SITE_ID = 1
+
 
 DATE_FORMAT, DATE_INPUT_FORMATS = '%d/%m/%Y', ['%d/%m/%Y']
 REST_FRAMEWORK = {
