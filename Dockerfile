@@ -1,11 +1,7 @@
 FROM python:3.7.7
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /my_app_dir
-WORKDIR /my_app_dir
-ADD requirements.txt /my_app_dir/
+RUN mkdir /code
+WORKDIR /code
+ADD requirements.txt /code/
 RUN pip install -- upgrade pip && pip install -r requirements.txt
-ADD . /my_app_dir/
-
-CMD
-
-ENTRYPOINT sh
+ADD . /code/

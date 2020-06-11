@@ -1,11 +1,11 @@
 from django.db import models
 from djmoney.models.fields import MoneyField
 from django.core.validators import MinLengthValidator
-from datetime import datetime
 
 
 # Create your models here.
 class Employee(models.Model):
+    """Creates Employee table"""
     cpf = models.CharField(primary_key=True,
                            max_length=11,
                            validators=[MinLengthValidator(11)],
@@ -31,6 +31,7 @@ class Employee(models.Model):
 
 
 class Salary(models.Model):
+    """Creates Salary table"""
     id = models.AutoField(primary_key=True, blank=False, null=False)
     date_pmt = models.DateField(blank=False, null=False)
     cpf = models.ForeignKey('coreapp.Employee', on_delete=models.CASCADE)

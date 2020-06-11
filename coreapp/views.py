@@ -1,36 +1,28 @@
 from django.db.models import Avg
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from coreapp.models import Employee, Salary
 from coreapp.serializers import EmployeeSerializer, SalarySerializer, CalculationsSerializer
 
 
-
-
 class EmployeeViewSet(ModelViewSet):
-    """"Creates Employees CRUD operations and """
+    """"Creates Employees CRUD operations and views"""
     permission_classes = [IsAuthenticated]
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
 
 class SalaryViewSet(ModelViewSet):
-    """"Creates Employees CRUD"""
+    """"Creates Employees CRUD operations and views"""
     permission_classes = [IsAuthenticated]
     queryset = Salary.objects.all()
     serializer_class = SalarySerializer
-    renderer_classes = (JSONRenderer,)
 
-def calculations(data):
-    serializer = CalculationsSerializer(data=data)
-    if serializer.is_valid():
-        return serializer.data
 
 class CalculationsView(APIView):
-
+    """"Calculates extra operations and view"""
     permission_classes = [IsAuthenticated]
     serializer_class = CalculationsSerializer
 

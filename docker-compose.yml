@@ -11,11 +11,11 @@ services:
        MYSQL_PASSWORD: '123123'
        MYSQL_ROOT_PASSWORD: '123123'
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/my_app_dir
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db
