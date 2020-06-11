@@ -30,7 +30,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +65,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# requires the server to include specific HTTP headers that allow for
+# the client to determine if and when cross-domain requests should be allowed.
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
@@ -75,6 +76,7 @@ CORS_ORIGIN_WHITELIST = (
 EMAIL_BACKEND = 'django.coreapp.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
+
 DATE_FORMAT, DATE_INPUT_FORMATS = '%d/%m/%Y', ['%d/%m/%Y']
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -83,8 +85,11 @@ REST_FRAMEWORK = {
     'DATE_INPUT_FORMATS': DATE_INPUT_FORMATS,
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
-
+        ],
+    'DEFAULT_RENDERER_CLASSES': [
+            'rest_framework.renderers.JSONRenderer',
+            'rest_framework.renderers.BrowsableAPIRenderer',
+        ]
 }
 
 ROOT_URLCONF = 'api_crud.urls'
