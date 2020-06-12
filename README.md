@@ -26,7 +26,12 @@ The database selected was MYSQL and it contains the following tables:
 
 ### Execution
 
-You can choose between en-us and pt-br. Just go to settings and change the LANGUAGE_CODE variable 
+You can choose between en-us and pt-br. Just go to settings and change the LANGUAGE_CODE variable. In addition, if you want to run the docker-compose the following DATABASE changes must be done in the ['settings'](api_crud/settings.py) file:
+
+* 'HOST': 'host.docker.internal'
+* 'PORT': '3307'
+
+In my machine (Windows) it is advisable to first run it locally and then deploy the docker if you also want to test the application without the docker. Once the docker is deployed, I couldn't get Django to connect to MYSQL locally again. It keeps trying to connect to the docker host even after I stopped and even deleted all containers, images and even the docker software itself. I am still trying to a workaround, but so far, I could only run it locally again after reinstalling MYSQL.
 
 ##### Credentials:
 If the project is run locally you have the option to create a superuser by running:

@@ -121,8 +121,11 @@ DATABASES = {
         'NAME': 'levecapitaldb',
         'USER': 'root',
         'PASSWORD': '123123',
-        'HOST': 'host.docker.internal',
-        'PORT': '3307'
+        'HOST': 'localhost',
+        'PORT': '3306'
+        ## Docker settings
+        # 'HOST':'host.docker.internal',
+        # 'PORT': '3307'
     }
 }
 
