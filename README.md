@@ -33,22 +33,22 @@ You can choose between en-us and pt-br. Just go to settings and change the LANGU
 
 In my machine (Windows) it is advisable to first run it locally and then deploy the docker if you also want to test the application without the docker. Once the docker is deployed, I couldn't get Django to connect to MYSQL locally again. It keeps trying to connect to the docker host even after I stopped and even deleted all containers, images and even the docker software itself. I am still trying to a workaround, but so far, I could only run it locally again after reinstalling MYSQL.
 
-##### Credentials:
+**Credentials**
 If the project is run locally you have the option to create a superuser by running:
 
 python manage.py createsuperuser
 
-But in case the docker-compose is used, a regular user must be added by using the urls below.
+But in case the docker-compose is used, a regular user must be added by using the urls below because the API will only allow authenticated users to perform operations.
 
-##### API URLS
-Use HTML form
+**API URLS**
+Use HTML form when using the browser
 * **Admin:** http://localhost:8000/admin/coreapp/
 * **User Registration:** http://localhost:8000/api/v1/rest-auth/registration/
 * **User Login:** http://localhost:8000/api/v1/rest-auth/login/
 * **User Logout:** http://localhost:8000/api/v1/rest-auth/logout/
 
 
-Use raw data
+Use raw data when using the browser
 * **Employee Create and List:** http://localhost:8000/api/v1/employee/
 * **Employee Retrieve, Update and Delete:** http://localhost:8000/api/v1/employee/{numero_do_CPF_registrado}/
 * **Salary Create and List:** http:/localhost:8000/api/v1/employee/
