@@ -31,7 +31,7 @@ You can choose between en-us and pt-br. Just go to settings and change the LANGU
 * 'HOST': 'host.docker.internal'
 * 'PORT': '3307'
 
-In my machine (Windows) it is advisable to first run it locally and then deploy the docker if you also want to test the application without the docker. Once the docker is deployed, I couldn't get Django to connect to MYSQL locally again. It keeps trying to connect to the docker host even after I stopped and even deleted all containers, images and even the docker software itself. I am still trying to a workaround, but so far, I could only run it locally again after reinstalling MYSQL.
+In my machine (Windows) it is advisable to first run it locally and then deploy the docker if you also want to test the application without the docker. Once the docker is deployed, I couldn't get Django to connect to MYSQL locally again. It keeps trying to connect to the docker host even after I stopped and even deleted all containers, images and even the docker software itself. I am still trying to find a workaround, but so far, I could only run it locally again after reinstalling MYSQL.
 
 Now please execute the following commands in the terminal:
 
