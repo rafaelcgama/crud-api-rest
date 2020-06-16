@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from coreapp.models import Employee, Salary
-from coreapp.serializers import EmployeeSerializer, SalarySerializer, CalculationsSerializer
+from coreapp.serializers import EmployeeSerializer, SalarySerializer, MoneySerializer
 
 
 class EmployeeViewSet(ModelViewSet):
@@ -24,7 +24,7 @@ class SalaryViewSet(ModelViewSet):
 class CalculationsView(APIView):
     """"Calculates extra operations and view"""
     permission_classes = [IsAuthenticated]
-    serializer_class = CalculationsSerializer
+    serializer_class = MoneySerializer
 
     def get(self, request):
         queryset = Salary.objects.all()
@@ -35,7 +35,7 @@ class CalculationsView(APIView):
         content = {
             'Menor salários': str(min_.salary),
             'Maior salários': str(max_.salary),
-            'Média dos salários': "R$ {:,.2f}".format(avg_salary),
+            'Média dos salários': "R${:,.2f}".format(avg_salary),
             'Média dos descontos': "R${:,.2f}".format(avg_deduction)
         }
 

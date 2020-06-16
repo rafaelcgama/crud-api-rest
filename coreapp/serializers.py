@@ -2,7 +2,6 @@ from django.db import models
 from rest_framework import serializers
 from coreapp.models import Employee, Salary
 from djmoney.models.fields import MoneyField
-from djmoney.models.validators import MinMoneyValidator, MaxMoneyValidator
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -22,7 +21,7 @@ class MoneyFieldClass(models.Model):
     amount = MoneyField(max_digits=8, decimal_places=2)
 
 
-class CalculationsSerializer(serializers.ModelSerializer):
+class MoneySerializer(serializers.ModelSerializer):
     class Meta:
         model = MoneyFieldClass
         fields = '__all__'

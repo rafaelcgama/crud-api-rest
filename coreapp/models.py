@@ -2,6 +2,14 @@ from django.db import models
 from djmoney.models.fields import MoneyField
 from django.core.validators import MinLengthValidator
 
+money_attribs = dict(
+    max_digits=13,
+    decimal_places=2,
+    blank=False,
+    null=False,
+    default_currency='BRL'
+)
+
 
 # Create your models here.
 class Employee(models.Model):
@@ -17,26 +25,14 @@ class Employee(models.Model):
     class Meta:
         db_table = 'employee'
 
-    def __str__(self):
-        return f"{self.cpf} - {self.name} - {self.dob}"
-
-    def get_cpf(self):
-        return self.cpf
-
-    def get_name(self):
-        return self.name
-
-    def get_dob(self):
-        return self.dob
-
 
 class Salary(models.Model):
     """Creates Salary table"""
-    id = models.AutoField(primary_key=True, blank=False, null=False)
+    id = models.AutoField(primary_key=True, blank=False, null=False, unique=True)
     date_pmt = models.DateField(blank=False, null=False)
-    cpf = models.ForeignKey('coreapp.Employee', on_delete=models.CASCADE)
-    salary = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
-    deduction = MoneyField(max_digits=7, decimal_places=2, blank=False, null=False, default_currency='BRL')
+    cpf = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    salary = MoneyField(**money_attribs)
+    deduction = MoneyField(**money_attribs)
 
     class Meta:
         db_table = 'salary'
