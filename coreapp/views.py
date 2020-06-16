@@ -22,7 +22,7 @@ class SalaryViewSet(ModelViewSet):
 
 
 class CalculationsView(APIView):
-    """"Calculates extra operations and view"""
+    """"Calculates extra operations and view them"""
     permission_classes = [IsAuthenticated]
     serializer_class = MoneySerializer
 
